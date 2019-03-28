@@ -13,9 +13,6 @@ class Wim_objectlogguer extends Module {
         $this->bootstrap = true;
 
         parent::__construct();
-
-        $this->displayName = $this->l('wim_objectlogguer');
-        $this->description = $this->l('Este es mi primer modulo');
     }
 
     public function install() {
@@ -33,7 +30,71 @@ class Wim_objectlogguer extends Module {
 
         return parent::install() &&
             $this->registerHook('header') &&
-            $this->registerHook('displayhome') &&
-            $this->registerHook('actionObject');
+            $this->registerHook('backOfficeHeader') &&
+            $this->registerHook('actionObjectAddBefore') &&
+            $this->registerHook('actionObjectAddAfter') &&
+            $this->registerHook('actionObjectUpdateBefore') &&
+            $this->registerHook('actionObjectUpdateAfter') &&
+            $this->registerHook('actionObjectDeleteBefore') &&
+            $this->registerHook('actionObjectDeleteAfter');
     }
+
+
+    /*function hookActionObjectDeleteBefore($params){
+        Db::getInstance()->insert('objectlogguer',array(
+            'affected_object' => $params['object']->id,
+            'action_type' => 'delete',
+            'object_type' => get_class($params['object']),
+            'message' => 'deleteado correctamente',
+            'date_add' =>date("Y-m-d H:i:s")
+        ));
+    }*/
+
+    function hookActionObjectDeleteAfter($params){
+        Db::getInstance()->insert('objectlogguer',array(
+            'affected_object' => $params['object']->id,
+            'action_type' => 'delete',
+            'object_type' => get_class($params['object']),
+            'message' => 'deleteado correctamente',
+            'date_add' =>date("Y-m-d H:i:s")
+        ));
+    }
+/************************************************** */
+    /*function hookActionObjectAddBefore($params){
+
+    }*/
+
+    function hookActionObjectAddAfter($params){
+        DB::getInstance()->insert('objectlogguer',array(
+            'affected_object' => $params['object']->id,
+            'action_type' => 'add',
+            'object_type' => get_class($params['object']),
+            'message' => 'añadido correctamente',
+            'date_add' =>date("Y-m-d H:i:s")
+        ));
+    }
+/*********************************************************** */
+
+
+    /*function hookActionObjectUpdateBefore($params){
+        Db::getInstance()->insert('objectlogguer',array(
+            'affected_object' => $params['object']->id,
+            'action_type' => 'update',
+            'object_type' => get_class($params['object']),
+            'message' => 'actualizado correctamente',
+            'date_add' =>date("Y-m-d H:i:s")
+        ));
+    }*/
+
+    function hookActionObjectUpdateAfter($params){
+        Db::getInstance()->insert('objectlogguer',array(
+            'affected_object' => $params['object']->id,
+            'action_type' => 'add',
+            'object_type' => get_class($params['object']),
+            'message' => 'añadido correctamente',
+            'date_add' =>date("Y-m-d H:i:s")
+        ));
+    }
+
+
 } 
