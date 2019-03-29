@@ -29,8 +29,8 @@ require_once 'classes/ObjectLogguer.php';
 if (!defined('_PS_VERSION_'))
     exit;
 
-class Wim_objectlogguer extends Module 
-{
+class Wim_Objectlogguer extends Module
+ {
     public function __construct()
     {
         $this->name = 'wim_objectlogguer';
@@ -81,7 +81,7 @@ class Wim_objectlogguer extends Module
             $after->message = "Object ". get_class($params['object']) . " with id " . $params['object']->id;
             $after->date_add = date("Y-m-d H:i:s");
 
-        if(get_class($params['object']) != 'ObjectLogguer') {
+        if (get_class($params['object']) != 'ObjectLogguer') {
                 $after->add();
         }
     }
@@ -101,6 +101,4 @@ class Wim_objectlogguer extends Module
     {
         $this->insertarCampo($params, 'Delete');
     }
-} 
-
-?>
+}
