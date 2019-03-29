@@ -35,7 +35,5 @@ class ObjectLogguer extends ObjectModel{
             'message' =>                        array('type' => self::TYPE_STRING, 'validate' => 'isGenericName'),
             'date_add' =>                       array('type' => self::TYPE_DATE, 'validate' => 'isDate', 'copy_post' => false),
         ),
-    );    
+    );   
 }
-
-?>

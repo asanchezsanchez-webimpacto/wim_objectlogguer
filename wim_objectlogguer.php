@@ -30,7 +30,7 @@ if (!defined('_PS_VERSION_'))
     exit;
 
 class Wim_Objectlogguer extends Module
- {
+{
     public function __construct()
     {
         $this->name = 'wim_objectlogguer';
