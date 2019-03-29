@@ -10,12 +10,13 @@ class Wim_objectlogguer extends Module {
         $this->name = 'wim_objectlogguer';
         $this->tab = 'administration';
         $this->version = '1.0.0';
-        $this->author = 'alvaro sanchez';
+        $this->author = 'alvaro_sanchez';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = array('min' => '1.6', 'max' => _PS_VERSION_);
         $this->bootstrap = true;
 
         $this->displayName = 'modulo log';
+        $this->description = 'modulo wim_objectlogguer';
         parent::__construct();
     }
 
@@ -44,8 +45,7 @@ class Wim_objectlogguer extends Module {
 
     
     
-    public function insertarCampo($params, $event)
-    {
+    public function insertarCampo($params, $event){
         $after = new ObjectLogguer();
             $after->affected_object = $params['object']->id;
             $after->action_type = $event;
@@ -56,9 +56,6 @@ class Wim_objectlogguer extends Module {
             if(get_class($params['object']) != 'ObjectLogguer') {
                 $after->add();
             }
-     
-
-
     }
 
     public function hookActionObjectAddAfter($params){
@@ -75,7 +72,6 @@ class Wim_objectlogguer extends Module {
     {
         $this->insertarCampo($params, 'Delete');
     }
-
-
-
 } 
+
+?>
