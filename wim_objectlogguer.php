@@ -1,5 +1,5 @@
 <?php
-/*
+/**
 * 2007-2016 PrestaShop
 *
 * NOTICE OF LICENSE
@@ -23,12 +23,14 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
+
 require_once 'classes/ObjectLogguer.php';
 
 if (!defined('_PS_VERSION_'))
     exit;
 
-class Wim_objectlogguer extends Module {
+class Wim_objectlogguer extends Module 
+{
     public function __construct()
     {
         $this->name = 'wim_objectlogguer';
@@ -81,7 +83,7 @@ class Wim_objectlogguer extends Module {
 
         if(get_class($params['object']) != 'ObjectLogguer') {
                 $after->add();
-            }
+        }
     }
 
     public function hookActionObjectAddAfter($params)
