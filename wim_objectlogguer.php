@@ -28,7 +28,7 @@ if (!defined('_PS_VERSION_'))
 
 require_once 'classes/ObjectLogguer.php';
 
-class Wim_Objectlogguer extends Module
+class WimObjectlogguer extends Module
 {
     public function __construct()
     {
