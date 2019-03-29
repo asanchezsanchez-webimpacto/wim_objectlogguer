@@ -23,7 +23,8 @@
 *  @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
 *  International Registered Trademark & Property of PrestaShop SA
 */
-class ObjectLogguer extends ObjectModel{
+class ObjectLogguer extends ObjectModel
+{
     
     public static $definition = array(
         'table' => 'objectlogguer',
@@ -35,5 +36,5 @@ class ObjectLogguer extends ObjectModel{
             'message' =>                        array('type' => self::TYPE_STRING, 'validate' => 'isGenericName'),
             'date_add' =>                       array('type' => self::TYPE_DATE, 'validate' => 'isDate', 'copy_post' => false),
         ),
-    );   
+    );
 }
